@@ -1,39 +1,22 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import Login from "./components/Login.jsx";
+import Registration from "./components/Registration.jsx";
+import Dashboard from "./components/Dashboard.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [page, setPage] = useState("login");
 
   return (
-    <>
-      <div style={{border:'2px solid red'}}>
-        <h1>ABES Engineering College</h1>
-        
-        <label>Roll Number: </label>
-        <input type="text"/>
-        <br/>
+    <div>
+      <button onClick={() => setPage("login")}>Login</button>
+      <button onClick={() => setPage("registration")}>Registration</button>
+      <button onClick={() => setPage("dashboard")}>Dashboard</button>
 
-        <label>Name: </label> 
-        <input type="text"/> 
-        <br/>
-
-        <label>Branch: </label>
-        <input type="text"/>
-        <br/>
-
-        <label>Section: </label>
-        <input type="text"/>
-        <br/>
-
-        <label>Skills: </label>
-        <input type="text"/>
-
-      </div>
-    </>
-  )
+      {page === "login" && <Login />}
+      {page === "registration" && <Registration />}
+      {page === "dashboard" && <Dashboard />}
+    </div>
+  );
 }
 
-export default App
+export default App;
